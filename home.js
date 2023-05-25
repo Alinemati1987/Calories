@@ -10,14 +10,17 @@ const { input } = require("./input.js");
 
 var allElves = input;
 
+const elvesArray = input.trim().split("\n\n");
+const allElvesArray = elvesArray.map((element) => element.trim().split("\n"));
+
 var max = 0;
 var sums = [];
 var firstThree = 0;
 
-allElves.forEach((elf) => {
+allElvesArray.forEach((elf) => {
   var sum = 0;
   elf.forEach((food) => {
-    sum += food;
+    sum += parseInt(food);
   });
 
   sums.push(sum);
