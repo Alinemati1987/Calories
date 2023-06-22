@@ -1,0 +1,24 @@
+{
+  "name": "E1",
+  "version": "1.0.0",
+  "description": "The jungle must be too overgrown and difficult to navigate in vehicles or access from the air, the Elves' expedition traditionally goes on foot. As your boats approach land, the Elves begin taking inventory of their supplies. One important consideration is food - in particular, the number of Calories each Elf is carrying (your puzzle input).",
+  "main": "home.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alinemati1987/Calories.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alinemati1987/Calories/issues"
+  },
+  "homepage": "https://github.com/Alinemati1987/Calories#readme"
+}

@@ -1,39 +1,55 @@
-const { input } = require("./input.js");
+// const { input } = require("./input.js");
+const fs = require("fs");
 
-// let elvs = [
-//   [1000, 2000, 3000],
-//   [4000],
-//   [5000, 6000],
-//   [7000, 8000, 9000],
-//   [10000],
-// ],
+// Main //
+function main() {
+  const data = getData();
+  const sumPortions = iterateData(data);
+  const partOne = getResult(1, sumPortions); // Arguments => first: number of items , second: Sum of each snack
+  const partTwo = getResult(3, sumPortions); // Arguments => first: number of items , second: Sum of each snack
+  consoleResults([partOne, partTwo]);
+}
 
-var allElves = input;
+// Functions //
 
-const elvesArray = input.trim().split("\n\n");
-const allElvesArray = elvesArray.map((element) => element.trim().split("\n"));
+function consoleResults(answers) {
+  answers.forEach((answer, i) => {
+    i++;
+    console.log("Answer of part " + i + " is: " + answer);
+  });
+}
 
-var max = 0;
-var sums = [];
-var firstThree = 0;
+function getResult(num, sums) {
+  let output = 0;
+  for (let i = 0; i < num; i++) {
+    output += sums[i];
+  }
+  return output;
+}
 
-allElvesArray.forEach((elf) => {
-  var sum = 0;
-  elf.forEach((food) => {
-    sum += parseInt(food);
+function iterateData(data) {
+  let max = 0;
+  let sums = [];
+
+  data.forEach((elf) => {
+    let sum = 0;
+    elf.forEach((food) => {
+      sum += parseInt(food);
+    });
+    sums.push(sum);
   });
 
-  sums.push(sum);
-
-  if (sum > max) {
-    max = sum;
-  }
-});
-
-sums = sums.sort((a, b) => b - a);
-
-for (let i = 0; i < 3; i++) {
-  firstThree += sums[i];
+  sums = sums.sort((a, b) => b - a);
+  return sums;
 }
-console.log("Total Calories that Elf carries is: " + max);
-console.log("Total Calories of the first three tops is: " + firstThree);
+
+function getData() {
+  const allData = fs.readFileSync("input.txt").toString();
+
+  const elvesArray = allData.trim().split("\n\n");
+  const allElvesArray = elvesArray.map((element) => element.trim().split("\n"));
+  return allElvesArray;
+}
+
+// Run the script
+main();
